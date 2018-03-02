@@ -1,0 +1,461 @@
+[
+  {
+    "state": "Alabama",
+    "abbreviation": "AL",
+    "workhours": 35.6,
+    "recspending": 905,
+    "totalspending": 31336,
+    "medianincome": 44765,
+    "religiousattendance": 0.46
+  },
+  {
+    "state": "Alaska",
+    "abbreviation": "AK",
+    "workhours": 34.4,
+    "recspending": 1441,
+    "totalspending": 49547,
+    "medianincome": 73355,
+    "religiousattendance": 0.26
+  },
+  {
+    "state": "Arizona",
+    "abbreviation": "AZ",
+    "workhours": 34.3,
+    "recspending": 951,
+    "totalspending": 34580,
+    "medianincome": 51492,
+    "religiousattendance": 0.33
+  },
+  {
+    "state": "Arkansas",
+    "abbreviation": "AR",
+    "workhours": 34.2,
+    "recspending": 903,
+    "totalspending": 31117,
+    "medianincome": 41995,
+    "religiousattendance": 0.45
+  },
+  {
+    "state": "California",
+    "abbreviation": "CA",
+    "workhours": 34.4,
+    "recspending": 1502,
+    "totalspending": 41827,
+    "medianincome": 64500,
+    "religiousattendance": 0.28
+  },
+  {
+    "state": "Colorado",
+    "abbreviation": "CO",
+    "workhours": 33.5,
+    "recspending": 1233,
+    "totalspending": 42648,
+    "medianincome": 63909,
+    "religiousattendance": 0.25
+  },
+  {
+    "state": "Connecticut",
+    "abbreviation": "CT",
+    "workhours": 33.6,
+    "recspending": 1396,
+    "totalspending": 48497,
+    "medianincome": 71346,
+    "religiousattendance": 0.25
+  },
+  {
+    "state": "Delaware",
+    "abbreviation": "DE",
+    "workhours": 33.2,
+    "recspending": 1584,
+    "totalspending": 42868,
+    "medianincome": 61255,
+    "religiousattendance": 0.35
+  },
+  {
+    "state": "District of Columbia",
+    "abbreviation": "DC",
+    "workhours": 35.6,
+    "recspending": 1024,
+    "totalspending": 56843,
+    "medianincome": 75628,
+    "religiousattendance": 0.23
+  },
+  {
+    "state": "Florida",
+    "abbreviation": "FL",
+    "workhours": 34,
+    "recspending": 1364,
+    "totalspending": 38644,
+    "medianincome": 49426,
+    "religiousattendance": 0.32
+  },
+  {
+    "state": "Georgia",
+    "abbreviation": "GA",
+    "workhours": 34.8,
+    "recspending": 951,
+    "totalspending": 34657,
+    "medianincome": 51244,
+    "religiousattendance": 0.39
+  },
+  {
+    "state": "Hawaii",
+    "abbreviation": "HI",
+    "workhours": 32.7,
+    "recspending": 1658,
+    "totalspending": 45123,
+    "medianincome": 73486,
+    "religiousattendance": 0.25
+  },
+  {
+    "state": "Idaho",
+    "abbreviation": "ID",
+    "workhours": 32.9,
+    "recspending": 1258,
+    "totalspending": 33653,
+    "medianincome": 48275,
+    "religiousattendance": 0.34
+  },
+  {
+    "state": "Illinois",
+    "abbreviation": "IL",
+    "workhours": 34.1,
+    "recspending": 1177,
+    "totalspending": 41772,
+    "medianincome": 59588,
+    "religiousattendance": 0.32
+  },
+  {
+    "state": "Indiana",
+    "abbreviation": "IN",
+    "workhours": 34.7,
+    "recspending": 1036,
+    "totalspending": 35633,
+    "medianincome": 50532,
+    "religiousattendance": 0.35
+  },
+  {
+    "state": "Iowa",
+    "abbreviation": "IA",
+    "workhours": 34.5,
+    "recspending": 1233,
+    "totalspending": 37005,
+    "medianincome": 54736,
+    "religiousattendance": 0.32
+  },
+  {
+    "state": "Kansas",
+    "abbreviation": "KS",
+    "workhours": 33.8,
+    "recspending": 1054,
+    "totalspending": 35984,
+    "medianincome": 53906,
+    "religiousattendance": 0.33
+  },
+  {
+    "state": "Kentucky",
+    "abbreviation": "KY",
+    "workhours": 35.1,
+    "recspending": 994,
+    "totalspending": 33288,
+    "medianincome": 45215,
+    "religiousattendance": 0.41
+  },
+  {
+    "state": "Louisiana",
+    "abbreviation": "LA",
+    "workhours": 35.1,
+    "recspending": 989,
+    "totalspending": 34181,
+    "medianincome": 45727,
+    "religiousattendance": 0.46
+  },
+  {
+    "state": "Maine",
+    "abbreviation": "ME",
+    "workhours": 33.9,
+    "recspending": 1232,
+    "totalspending": 43021,
+    "medianincome": 51494,
+    "religiousattendance": 0.2
+  },
+  {
+    "state": "Maryland",
+    "abbreviation": "MD",
+    "workhours": 34.3,
+    "recspending": 1220,
+    "totalspending": 44748,
+    "medianincome": 75847,
+    "religiousattendance": 0.31
+  },
+  {
+    "state": "Massachusetts",
+    "abbreviation": "MA",
+    "workhours": 33.4,
+    "recspending": 1759,
+    "totalspending": 51981,
+    "medianincome": 70628,
+    "religiousattendance": 0.22
+  },
+  {
+    "state": "Michigan",
+    "abbreviation": "MI",
+    "workhours": 34.3,
+    "recspending": 1142,
+    "totalspending": 39332,
+    "medianincome": 51084,
+    "religiousattendance": 0.32
+  },
+  {
+    "state": "Minnesota",
+    "abbreviation": "MN",
+    "workhours": 34,
+    "recspending": 1447,
+    "totalspending": 43930,
+    "medianincome": 63488,
+    "religiousattendance": 0.31
+  },
+  {
+    "state": "Mississippi",
+    "abbreviation": "MS",
+    "workhours": 34.7,
+    "recspending": 783,
+    "totalspending": 30200,
+    "medianincome": 40593,
+    "religiousattendance": 0.47
+  },
+  {
+    "state": "Missouri",
+    "abbreviation": "MO",
+    "workhours": 33.4,
+    "recspending": 1109,
+    "totalspending": 37526,
+    "medianincome": 50238,
+    "religiousattendance": 0.35
+  },
+  {
+    "state": "Montana",
+    "abbreviation": "MT",
+    "workhours": 32.8,
+    "recspending": 1829,
+    "totalspending": 41204,
+    "medianincome": 49509,
+    "religiousattendance": 0.27
+  },
+  {
+    "state": "Nebraska",
+    "abbreviation": "NE",
+    "workhours": 33.8,
+    "recspending": 1132,
+    "totalspending": 38970,
+    "medianincome": 54996,
+    "religiousattendance": 0.35
+  },
+  {
+    "state": "Nevada",
+    "abbreviation": "NV",
+    "workhours": 33.9,
+    "recspending": 1163,
+    "totalspending": 36177,
+    "medianincome": 52431,
+    "religiousattendance": 0.27
+  },
+  {
+    "state": "New Hampshire",
+    "abbreviation": "NH",
+    "workhours": 33.8,
+    "recspending": 1158,
+    "totalspending": 48810,
+    "medianincome": 70303,
+    "religiousattendance": 0.2
+  },
+  {
+    "state": "New Jersey",
+    "abbreviation": "NJ",
+    "workhours": 34.1,
+    "recspending": 1326,
+    "totalspending": 48972,
+    "medianincome": 72222,
+    "religiousattendance": 0.3
+  },
+  {
+    "state": "New Mexico",
+    "abbreviation": "NM",
+    "workhours": 33.5,
+    "recspending": 923,
+    "totalspending": 35699,
+    "medianincome": 45382,
+    "religiousattendance": 0.36
+  },
+  {
+    "state": "New York",
+    "abbreviation": "NY",
+    "workhours": 33.5,
+    "recspending": 927,
+    "totalspending": 46906,
+    "medianincome": 44765,
+    "religiousattendance": 0.27
+  },
+  {
+    "state": "North Carolina",
+    "abbreviation": "NC",
+    "workhours": 34.3,
+    "recspending": 1160,
+    "totalspending": 33779,
+    "medianincome": 47830,
+    "religiousattendance": 0.4
+  },
+  {
+    "state": "North Dakota",
+    "abbreviation": "ND",
+    "workhours": 34.4,
+    "recspending": 1864,
+    "totalspending": 48225,
+    "medianincome": 60557,
+    "religiousattendance": 0.32
+  },
+  {
+    "state": "Ohio",
+    "abbreviation": "OH",
+    "workhours": 34.3,
+    "recspending": 968,
+    "totalspending": 37449,
+    "medianincome": 51075,
+    "religiousattendance": 0.32
+  },
+  {
+    "state": "Oklahoma",
+    "abbreviation": "OK",
+    "workhours": 35,
+    "recspending": 909,
+    "totalspending": 32978,
+    "medianincome": 48568,
+    "religiousattendance": 0.39
+  },
+  {
+    "state": "Oregon",
+    "abbreviation": "OR",
+    "workhours": 34.1,
+    "recspending": 1414,
+    "totalspending": 39742,
+    "medianincome": 54148,
+    "religiousattendance": 0.24
+  },
+  {
+    "state": "Pennsylvania",
+    "abbreviation": "PA",
+    "workhours": 33.8,
+    "recspending": 1164,
+    "totalspending": 40886,
+    "medianincome": 55702,
+    "religiousattendance": 0.32
+  },
+  {
+    "state": "Rhode Island",
+    "abbreviation": "RI",
+    "workhours": 32.7,
+    "recspending": 864,
+    "totalspending": 42454,
+    "medianincome": 58073,
+    "religiousattendance": 0.28
+  },
+  {
+    "state": "South Carolina",
+    "abbreviation": "SC",
+    "workhours": 34.5,
+    "recspending": 916,
+    "totalspending": 33266,
+    "medianincome": 47238,
+    "religiousattendance": 0.42
+  },
+  {
+    "state": "South Dakota",
+    "abbreviation": "SD",
+    "workhours": 34,
+    "recspending": 1338,
+    "totalspending": 39475,
+    "medianincome": 53017,
+    "religiousattendance": 0.31
+  },
+  {
+    "state": "Tennessee",
+    "abbreviation": "TN",
+    "workhours": 35.5,
+    "recspending": 1030,
+    "totalspending": 34219,
+    "medianincome": 47275,
+    "religiousattendance": 0.42
+  },
+  {
+    "state": "Texas",
+    "abbreviation": "TX",
+    "workhours": 35.7,
+    "recspending": 978,
+    "totalspending": 36537,
+    "medianincome": 55653,
+    "religiousattendance": 0.39
+  },
+  {
+    "state": "Utah",
+    "abbreviation": "UT",
+    "workhours": 34.7,
+    "recspending": 1396,
+    "totalspending": 35114,
+    "medianincome": 62912,
+    "religiousattendance": 0.51
+  },
+  {
+    "state": "Vermont",
+    "abbreviation": "VT",
+    "workhours": 33.4,
+    "recspending": 1397,
+    "totalspending": 47648,
+    "medianincome": 56990,
+    "religiousattendance": 0.17
+  },
+  {
+    "state": "Virginia",
+    "abbreviation": "VA",
+    "workhours": 34.9,
+    "recspending": 1088,
+    "totalspending": 41632,
+    "medianincome": 66262,
+    "religiousattendance": 0.35
+  },
+  {
+    "state": "Washington",
+    "abbreviation": "WA",
+    "workhours": 34.6,
+    "recspending": 1823,
+    "totalspending": 56843,
+    "medianincome": 64129,
+    "religiousattendance": 0.24
+  },
+  {
+    "state": "West Virginia",
+    "abbreviation": "WV",
+    "workhours": 35,
+    "recspending": 846,
+    "totalspending": 34418,
+    "medianincome": 42019,
+    "religiousattendance": 0.34
+  },
+  {
+    "state": "Wisconsin",
+    "abbreviation": "WI",
+    "workhours": 33.5,
+    "recspending": 1348,
+    "totalspending": 38788,
+    "medianincome": 55636,
+    "religiousattendance": 0.29
+  },
+  {
+    "state": "Wyoming",
+    "abbreviation": "WY",
+    "workhours": 33.2,
+    "recspending": 1061,
+    "totalspending": 40327,
+    "medianincome": 60214,
+    "religiousattendance": 0.28
+  }
+]

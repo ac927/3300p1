@@ -1,0 +1,60 @@
+"Contributions to percent change in real GDP (percentage points)"
+"Levels" 
+"Bureau of Economic Analysis" 
+"All industry total (percent change)"
+"Fips","Area","2016"
+"01000","Alabama",1.5
+"02000","Alaska",-5.4
+"04000","Arizona",2.6
+"05000","Arkansas",0.9
+"06000","California",3.3
+"08000","Colorado",1.1
+"09000","Connecticut",0
+"10000","Delaware",0.1
+"11000","District of Columbia",2.1
+"12000","Florida",2.4
+"13000","Georgia",3
+"15000","Hawaii",1.9
+"16000","Idaho",2.7
+"17000","Illinois",1
+"18000","Indiana",2.5
+"19000","Iowa",1.6
+"20000","Kansas",-0.9
+"21000","Kentucky",1.2
+"22000","Louisiana",0.2
+"23000","Maine",1.6
+"24000","Maryland",2.5
+"25000","Massachusetts",1.5
+"26000","Michigan",2.2
+"27000","Minnesota",2.1
+"28000","Mississippi",1.2
+"29000","Missouri",0.3
+"30000","Montana",1.1
+"31000","Nebraska",0.9
+"32000","Nevada",1.4
+"33000","New Hampshire",1.6
+"34000","New Jersey",0.7
+"35000","New Mexico",0.2
+"36000","New York",0.4
+"37000","North Carolina",1.9
+"38000","North Dakota",-5
+"39000","Ohio",1.1
+"40000","Oklahoma",-4.1
+"41000","Oregon",3.8
+"42000","Pennsylvania",0.6
+"44000","Rhode Island",0.5
+"45000","South Carolina",1.8
+"46000","South Dakota",0.7
+"47000","Tennessee",2.9
+"48000","Texas",-0.3
+"49000","Utah",3.7
+"50000","Vermont",0.7
+"51000","Virginia",0.5
+"53000","Washington",4.2
+"54000","West Virginia",-1.1
+"55000","Wisconsin",1.3
+"56000","Wyoming",-1.8
+"Legend / Footnotes:"
+"Note-- NAICS Industry detail is based on the 2007 North American Industry Classification System (NAICS)."
+"Note-- Per capita real GDP statistics for 2010-2016 reflect Census Bureau midyear population estimates available as of December 2016."
+"Last updated: November 21, 2017 -- revised statistics for 2014-2016."

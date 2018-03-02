@@ -1,0 +1,59 @@
+"Per capita personal consumption expenditures (PCE) by state (dollars)"
+"Levels" 
+"Bureau of Economic Analysis" 
+"Recreational goods and vehicles"
+"Fips","Area","2016"
+"01000","Alabama",905
+"02000","Alaska",1441
+"04000","Arizona",951
+"05000","Arkansas",903
+"06000","California",1502
+"08000","Colorado",1233
+"09000","Connecticut",1396
+"10000","Delaware",1584
+"11000","District of Columbia",1024
+"12000","Florida",1364
+"13000","Georgia",951
+"15000","Hawaii",1658
+"16000","Idaho",1258
+"17000","Illinois",1177
+"18000","Indiana",1036
+"19000","Iowa",1233
+"20000","Kansas",1054
+"21000","Kentucky",994
+"22000","Louisiana",989
+"23000","Maine",1232
+"24000","Maryland",1220
+"25000","Massachusetts",1759
+"26000","Michigan",1142
+"27000","Minnesota",1447
+"28000","Mississippi",783
+"29000","Missouri",1109
+"30000","Montana",1829
+"31000","Nebraska",1132
+"32000","Nevada",1163
+"33000","New Hampshire",1158
+"34000","New Jersey",1326
+"35000","New Mexico",923
+"36000","New York",927
+"37000","North Carolina",1160
+"38000","North Dakota",1864
+"39000","Ohio",968
+"40000","Oklahoma",909
+"41000","Oregon",1414
+"42000","Pennsylvania",1164
+"44000","Rhode Island",864
+"45000","South Carolina",916
+"46000","South Dakota",1338
+"47000","Tennessee",1030
+"48000","Texas",978
+"49000","Utah",1396
+"50000","Vermont",1397
+"51000","Virginia",1088
+"53000","Washington",1823
+"54000","West Virginia",846
+"55000","Wisconsin",1348
+"56000","Wyoming",1061
+"Legend / Footnotes:"
+"Note-- All personal consumption expenditures (PCE) estimates are in millions of current dollars (not adjusted for inflation). Per capita PCE estimates are in current dollars, and reflect Census Bureau midyear population estimates for years 2010-2016 available as of December 2016. Per capita values are computed from unrounded data."
+"Last updated: October 4, 2017; new PCE by state statistics for 2016, and revised statistics for 2014-2015. Per capita PCE was revised 2010-2015."

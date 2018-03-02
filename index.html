@@ -1,0 +1,77 @@
+<html>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<svg id="plot">
+	<script>
+		
+		var fullData
+
+		d3.json("master-hours-spending-religion.json", function(error, data) {
+
+			if(error){
+				console.log(error)
+			}
+
+			fullData = data
+
+			var height = 800
+			var width = 800
+
+			var margins = {
+				"left": 50,
+				"right": 30,
+				"top": 30,
+				"bottom": 30,
+			}
+
+			var domainWidth = width - margins.left - margins.right
+			var domainHeight = height - margins.top - margins.bottom
+
+			var svg = d3.select("#plot")
+			.attr("height", height)
+			.attr("width", width)
+			.append("g")
+			.attr("transform", "translate(" + margins.left + "," + margins.top + ")")
+
+			var xScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
+				return d.religiousattendance
+			})).range([0, domainWidth])
+
+			var yScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
+				return d.workhours
+			})).range([domainHeight, 0])
+
+			var sizeScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
+				return d.medianincome
+			})).range([2,20])
+
+			var xAxis = d3.axisBottom(xScale).ticks(10)
+			var yAxis = d3.axisLeft(yScale).ticks(10)
+
+			svg.append("g")
+			.attr("transform", "translate(0," + domainWidth/2 + ")" )
+			.call(xAxis)
+
+			svg.append("g")
+			.attr("transform", "translate(" + domainHeight/2 + ",0)")
+			.call(yAxis)
+
+			data.forEach(function (state) {
+				svg.append("circle")
+				.attr("r", sizeScale(state.medianincome))
+				//.attr("r", 5)
+				.attr("cx", xScale(state.religiousattendance))
+				.attr("cy", yScale(state.workhours))
+
+				svg.append("text")
+				.attr("x", xScale(state.religiousattendance))
+				.attr("y", yScale(state.workhours))
+				.attr("dy", (-1*sizeScale(state.medianincome)))
+				//.attr("dy", -5)
+				.text(state.abbreviation)
+			})
+
+			
+
+		})
+	</script>
+</html>
