@@ -1,6 +1,11 @@
 <html>
+	<title>CS 3300 Project 1 (rw466, acac927, tzs2)</title>
+	<body style="background-color:azure;">
 	<script src="https://d3js.org/d3.v4.min.js"></script>
-	<svg id="plot">
+	<h1 style="font-family:Garamond;text-align:center">Religious Attendance vs. Weekly Hours Worked vs. Median Income</h1>
+
+	<svg id="plot" align="center"> </svg>
+	
 	<script>
 		
 		var fullData
@@ -15,6 +20,8 @@
 
 			var height = 800
 			var width = 800
+			
+			
 
 			var margins = {
 				"left": 50,
@@ -31,21 +38,45 @@
 			.attr("width", width)
 			.append("g")
 			.attr("transform", "translate(" + margins.left + "," + margins.top + ")")
+			
+			svg.append("rect")
+			.attr("height", domainHeight)
+			.attr("width", domainWidth)
+			.attr("stroke", "white")
+			.attr("stroke-width", 5)
+			.attr("fill", "papayawhip")
+			
 
 			var xScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
 				return d.religiousattendance
-			})).range([0, domainWidth])
+			})).range([20, domainWidth-20])
 
 			var yScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
 				return d.workhours
-			})).range([domainHeight, 0])
+			})).range([domainHeight-20, 20])
 
 			var sizeScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
 				return d.medianincome
 			})).range([2,20])
 
 			var xAxis = d3.axisBottom(xScale).ticks(10)
+			svg.append("text")             
+			.attr("transform", "translate(" + (width*3/4) + " ," + 
+                           (height/2) + ")")
+			.style("text-anchor", "middle")
+			.attr("font-family", "garamond")
+			.attr("font-weight", 700)
+			.text("Religious Attendance")
+			
 			var yAxis = d3.axisLeft(yScale).ticks(10)
+			svg.append("text")
+			.style("text-anchor", "middle")
+			.style("dominant-baseline", "central")             
+			.attr("transform", "translate("+
+			(width*2/5) + " ," + (height/6) + ")rotate (270)")
+			.attr("font-family", "garamond")
+			.attr("font-weight", 700)
+			.text("Weekly Hours Worked")
 
 			svg.append("g")
 			.attr("transform", "translate(0," + domainWidth/2 + ")" )
@@ -61,8 +92,11 @@
 				//.attr("r", 5)
 				.attr("cx", xScale(state.religiousattendance))
 				.attr("cy", yScale(state.workhours))
+				.attr("fill", "dodgerblue")
+				
 
 				svg.append("text")
+				.attr("font-family", "helvetica")
 				.attr("x", xScale(state.religiousattendance))
 				.attr("y", yScale(state.workhours))
 				.attr("dy", (-1*sizeScale(state.medianincome)))
