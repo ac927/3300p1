@@ -2,6 +2,7 @@
 	<title>CS 3300 Project 1 (rw466, acac927, tzs2)</title>
 	<body style="background-color:azure;">
 	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://d3js.org/topojson.v2.min.js"></script>
 	<h1 style="font-family:Garamond;text-align:center">Religious Attendance vs. Weekly Hours Worked vs. Median Income</h1>
 
 	<svg id="plot" align="center"></svg>
@@ -55,7 +56,7 @@
 			})).range([domainHeight-20, 20])
 
 			var sizeScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
-				return d.recspending
+				return d.medianincome
 			})).range([2,20])
 
 			var xAxis = d3.axisBottom(xScale).ticks(10)
@@ -92,7 +93,7 @@
 
 			//following code is to create a legend
 			var legendwidth = 200;
-			var legendpadding = 5;
+			var legendpadding = 10;
 			var legendheight = 100;
 
 			//legend box and title
@@ -105,16 +106,16 @@
 
 			svg.append("text")
 				.attr("transform", "translate(" + domainWidth*2.6/4 +","+domainHeight*3.2/4+")")
-				.attr("x",legendwidth/8)
+				.attr("x",legendwidth/4)
 				.attr("y",-legendheight/10)
-				.text("Recreational Spending")
+				.text("Median Income")
 
 			//items in legend
 			legend = svg.append("g")
 			.attr("transform", "translate(" + domainWidth*2.6/4 +","+domainHeight*3.2/4+")")
 			.selectAll("g")
 			//first and last data is the min and max of recreational spending
-			.data([783,,,,1864])
+			.data(["$40593",,,,"$75847"])
 			.enter()
 			//creates a g element for each point in arbitrary data
 			.append("g")
@@ -139,27 +140,29 @@
 			legend.append("text")
 				.attr("x",5)
 				.attr("y",legendheight/2)
+				.attr("font-size",legendwidth/15)
 				.text(function(d){
 					return d;
 				}
 			)
+			var path = d3.geoPath();
 
 			data.forEach(function (state) {
 
 				svg.append("circle")
-				.attr("r", sizeScale(state.recspending))
+				.attr("r", sizeScale(state.medianincome))
 				//.attr("r", 5)
 				.attr("cx", xScale(state.religiousattendance))
 				.attr("cy", yScale(state.workhours))
 				.attr("fill",function(d){
-					return colorScale(sizeScale(state.recspending)*5);
+					return colorScale(sizeScale(state.medianincome)*5);
 				});
 
 				svg.append("text")
 				.attr("font-family", "helvetica")
 				.attr("x", xScale(state.religiousattendance))
 				.attr("y", yScale(state.workhours))
-				.attr("dy", (-1*sizeScale(state.recspending)))
+				.attr("dy", (-1*sizeScale(state.medianincome)))
 				//.attr("dy", -5)
 				.text(state.abbreviation);
 
