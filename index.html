@@ -197,6 +197,32 @@
 												 return colorScale(sizeScale(result)*5)
 											 }
 										 )
+										legend.append("rect")
+	 										.attr("y",legendheight/6)
+	 										.attr("x",legendwidth/10)
+	 										.attr("width",legendwidth/5)
+											.attr("height",legendheight/6)
+										.attr("transform", "translate(0," + domainHeight + ")" )
+	 										//varies color according to our color scale
+	 										.attr("fill",function(d,i){
+	 											return colorScale(i*25);
+	 										})
+
+	 									//appends text per data
+	 									legend.append("text")
+											.attr("transform", "translate(0," + domainHeight + ")" )
+	 										.attr("x",20)
+	 										.attr("y",legendheight/2)
+	 										.attr("font-size",legendwidth/15)
+	 										.text(function(d){
+	 											return d;
+	 										})
+
+										svg.append("text")
+											.attr("transform", "translate(" + domainWidth*2.7/4 +","+domainHeight*1.8+")")
+											.attr("x",legendwidth/4)
+											.text("Median Income")
+
 
 		}
 
