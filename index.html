@@ -4,10 +4,10 @@
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<h1 style="font-family:Garamond;text-align:center">Religious Attendance vs. Weekly Hours Worked vs. Median Income</h1>
 
-	<svg id="plot" align="center"> </svg>
-	
+	<svg id="plot" align="center"></svg>
+
 	<script>
-		
+
 		var fullData
 
 		d3.json("master-hours-spending-religion.json", function(error, data) {
@@ -20,8 +20,6 @@
 
 			var height = 800
 			var width = 800
-			
-			
 
 			var margins = {
 				"left": 50,
@@ -33,19 +31,20 @@
 			var domainWidth = width - margins.left - margins.right
 			var domainHeight = height - margins.top - margins.bottom
 
+
 			var svg = d3.select("#plot")
 			.attr("height", height)
 			.attr("width", width)
 			.append("g")
 			.attr("transform", "translate(" + margins.left + "," + margins.top + ")")
-			
+
 			svg.append("rect")
 			.attr("height", domainHeight)
 			.attr("width", domainWidth)
 			.attr("stroke", "white")
 			.attr("stroke-width", 5)
 			.attr("fill", "papayawhip")
-			
+
 
 			var xScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
 				return d.religiousattendance
@@ -56,22 +55,22 @@
 			})).range([domainHeight-20, 20])
 
 			var sizeScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
-				return d.medianincome
+				return d.recspending
 			})).range([2,20])
 
 			var xAxis = d3.axisBottom(xScale).ticks(10)
-			svg.append("text")             
-			.attr("transform", "translate(" + (width*3/4) + " ," + 
+			svg.append("text")
+			.attr("transform", "translate(" + (width*3/4) + " ," +
                            (height/2) + ")")
 			.style("text-anchor", "middle")
 			.attr("font-family", "garamond")
 			.attr("font-weight", 700)
 			.text("Religious Attendance")
-			
+
 			var yAxis = d3.axisLeft(yScale).ticks(10)
 			svg.append("text")
 			.style("text-anchor", "middle")
-			.style("dominant-baseline", "central")             
+			.style("dominant-baseline", "central")
 			.attr("transform", "translate("+
 			(width*2/5) + " ," + (height/6) + ")rotate (270)")
 			.attr("font-family", "garamond")
@@ -79,32 +78,92 @@
 			.text("Weekly Hours Worked")
 
 			svg.append("g")
-			.attr("transform", "translate(0," + domainWidth/2 + ")" )
+			.attr("transform", "translate(0," + domainHeight/2 + ")" )
 			.call(xAxis)
 
 			svg.append("g")
-			.attr("transform", "translate(" + domainHeight/2 + ",0)")
+			.attr("transform", "translate(" + domainWidth/2 + ",0)")
 			.call(yAxis)
 
+			//scales color from marroon to dodgerblue
+			var colorScale = d3.scaleLinear()
+				.domain([5, 100])
+				.range(["maroon", "dodgerblue"]);
+
+			//following code is to create a legend
+			var legendwidth = 200;
+			var legendpadding = 5;
+			var legendheight = 100;
+
+			//legend box and title
+			svg.append("rect")
+				.attr("transform", "translate(" + domainWidth*2.6/4 +","+domainHeight*3/4+")")
+				.attr("fill","white")
+				.attr("stroke","black")
+				.attr("height",legendheight+legendpadding)
+				.attr("width",legendwidth+legendpadding)
+
+			svg.append("text")
+				.attr("transform", "translate(" + domainWidth*2.6/4 +","+domainHeight*3.2/4+")")
+				.attr("x",legendwidth/8)
+				.attr("y",-legendheight/10)
+				.text("Recreational Spending")
+
+			//items in legend
+			legend = svg.append("g")
+			.attr("transform", "translate(" + domainWidth*2.6/4 +","+domainHeight*3.2/4+")")
+			.selectAll("g")
+			//first and last data is the min and max of recreational spending
+			.data([783,,,,1864])
+			.enter()
+			//creates a g element for each point in arbitrary data
+			.append("g")
+				.attr("transform",function(d,i){
+					var x = i*legendwidth/5;
+					return "translate("+x+",0)";
+				})
+
+			//adds an item of varying color for each point in data
+			legend.append("circle")
+				.attr("cy",legendheight/6)
+				.attr("cx",legendwidth/10)
+				.attr("r",function(d,i){
+					return 7+i*3;
+				})
+				//varies color according to our color scale
+				.attr("fill",function(d,i){
+					return colorScale(i*25);
+				})
+
+			//appends text per data
+			legend.append("text")
+				.attr("x",5)
+				.attr("y",legendheight/2)
+				.text(function(d){
+					return d;
+				}
+			)
+
 			data.forEach(function (state) {
+
 				svg.append("circle")
-				.attr("r", sizeScale(state.medianincome))
+				.attr("r", sizeScale(state.recspending))
 				//.attr("r", 5)
 				.attr("cx", xScale(state.religiousattendance))
 				.attr("cy", yScale(state.workhours))
-				.attr("fill", "dodgerblue")
-				
+				.attr("fill",function(d){
+					return colorScale(sizeScale(state.recspending)*5);
+				});
 
 				svg.append("text")
 				.attr("font-family", "helvetica")
 				.attr("x", xScale(state.religiousattendance))
 				.attr("y", yScale(state.workhours))
-				.attr("dy", (-1*sizeScale(state.medianincome)))
+				.attr("dy", (-1*sizeScale(state.recspending)))
 				//.attr("dy", -5)
-				.text(state.abbreviation)
-			})
+				.text(state.abbreviation);
 
-			
+			})
 
 		})
 	</script>

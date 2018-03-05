@@ -72,15 +72,6 @@
     "religiousattendance": 0.35
   },
   {
-    "state": "District of Columbia",
-    "abbreviation": "DC",
-    "workhours": 35.6,
-    "recspending": 1024,
-    "totalspending": 56843,
-    "medianincome": 75628,
-    "religiousattendance": 0.23
-  },
-  {
     "state": "Florida",
     "abbreviation": "FL",
     "workhours": 34,
