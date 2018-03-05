@@ -3,171 +3,202 @@
 	<body style="background-color:azure;">
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://d3js.org/topojson.v2.min.js"></script>
+	<script src="http://d3js.org/queue.v1.min.js"></script>
 	<h1 style="font-family:Garamond;text-align:center">Religious Attendance vs. Weekly Hours Worked vs. Median Income</h1>
 
 	<svg id="plot" align="center"></svg>
 
 	<script>
 
+		//queues multiple datasets and waits until ready is executed
+		queue()
+		//unpkg is an open source site, the file we downloaded is a
+		//json file for us state and county border data
+		 .defer(d3.json, "https://unpkg.com/us-atlas@1/us/10m.json")
+		 .defer(d3.json,"master-hours-spending-religion.json")
+		 .await(ready);
+
+		//set up variables and svg element
 		var fullData
 
-		d3.json("master-hours-spending-religion.json", function(error, data) {
+		var height = 800
+		var width = 800
 
-			if(error){
-				console.log(error)
-			}
+		var margins = {
+			"left": 50,
+			"right": 30,
+			"top": 30,
+			"bottom": 30,
+		}
 
-			fullData = data
-
-			var height = 800
-			var width = 800
-
-			var margins = {
-				"left": 50,
-				"right": 30,
-				"top": 30,
-				"bottom": 30,
-			}
-
-			var domainWidth = width - margins.left - margins.right
-			var domainHeight = height - margins.top - margins.bottom
+		var domainWidth = width - margins.left - margins.right
+		var domainHeight = height - margins.top - margins.bottom
 
 
-			var svg = d3.select("#plot")
-			.attr("height", height)
-			.attr("width", width)
-			.append("g")
-			.attr("transform", "translate(" + margins.left + "," + margins.top + ")")
+		var svg = d3.select("#plot")
+		.attr("height", height*2)
+		.attr("width", width*2)
+		.append("g")
+		.attr("transform", "translate(" + margins.left + "," + margins.top + ")")
 
-			svg.append("rect")
-			.attr("height", domainHeight)
-			.attr("width", domainWidth)
-			.attr("stroke", "white")
-			.attr("stroke-width", 5)
-			.attr("fill", "papayawhip")
+		//sets up first visualization
+		svg.append("rect")
+		.attr("height", domainHeight)
+		.attr("width", domainWidth)
+		.attr("stroke", "white")
+		.attr("stroke-width", 5)
+		.attr("fill", "papayawhip")
 
 
-			var xScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
-				return d.religiousattendance
-			})).range([20, domainWidth-20])
+		svg.append("text")
+		.attr("transform", "translate(" + (width*3/4) + " ," +
+												 (height/2) + ")")
+		.style("text-anchor", "middle")
+		.attr("font-family", "garamond")
+		.attr("font-weight", 700)
+		.text("Religious Attendance")
 
-			var yScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
-				return d.workhours
-			})).range([domainHeight-20, 20])
 
-			var sizeScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
-				return d.medianincome
-			})).range([2,20])
+		svg.append("text")
+		.style("text-anchor", "middle")
+		.style("dominant-baseline", "central")
+		.attr("transform", "translate("+
+		(width*2/5) + " ," + (height/6) + ")rotate (270)")
+		.attr("font-family", "garamond")
+		.attr("font-weight", 700)
+		.text("Weekly Hours Worked")
 
-			var xAxis = d3.axisBottom(xScale).ticks(10)
-			svg.append("text")
-			.attr("transform", "translate(" + (width*3/4) + " ," +
-                           (height/2) + ")")
-			.style("text-anchor", "middle")
-			.attr("font-family", "garamond")
-			.attr("font-weight", 700)
-			.text("Religious Attendance")
+		//following code is to create a legend
+		var legendwidth = 200;
+		var legendpadding = 10;
+		var legendheight = 100;
 
-			var yAxis = d3.axisLeft(yScale).ticks(10)
-			svg.append("text")
-			.style("text-anchor", "middle")
-			.style("dominant-baseline", "central")
-			.attr("transform", "translate("+
-			(width*2/5) + " ," + (height/6) + ")rotate (270)")
-			.attr("font-family", "garamond")
-			.attr("font-weight", 700)
-			.text("Weekly Hours Worked")
+		var path=d3.geoPath()
 
-			svg.append("g")
-			.attr("transform", "translate(0," + domainHeight/2 + ")" )
-			.call(xAxis)
+	//main function combining both datasets
+	 function ready(error, us,data){
 
-			svg.append("g")
-			.attr("transform", "translate(" + domainWidth/2 + ",0)")
-			.call(yAxis)
+		 			//scales
+					var xScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
+ 						return d.religiousattendance
+ 						})).range([20, domainWidth-20])
 
-			//scales color from marroon to dodgerblue
-			var colorScale = d3.scaleLinear()
-				.domain([5, 100])
-				.range(["maroon", "dodgerblue"]);
+ 					var yScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
+ 						return d.workhours
+ 							})).range([domainHeight-20, 20])
 
-			//following code is to create a legend
-			var legendwidth = 200;
-			var legendpadding = 10;
-			var legendheight = 100;
+ 					var sizeScale = d3.scaleLinear().domain(d3.extent(data, function (d) {
+ 						return d.medianincome
+ 							})).range([2,20])
 
-			//legend box and title
-			svg.append("rect")
-				.attr("transform", "translate(" + domainWidth*2.6/4 +","+domainHeight*3/4+")")
-				.attr("fill","white")
-				.attr("stroke","black")
-				.attr("height",legendheight+legendpadding)
-				.attr("width",legendwidth+legendpadding)
+					//scales color from marroon to dodgerblue
+					var colorScale = d3.scaleLinear()
+							.domain([5, 100])
+							.range(["maroon", "dodgerblue"]);
 
-			svg.append("text")
-				.attr("transform", "translate(" + domainWidth*2.6/4 +","+domainHeight*3.2/4+")")
-				.attr("x",legendwidth/4)
-				.attr("y",-legendheight/10)
-				.text("Median Income")
 
-			//items in legend
-			legend = svg.append("g")
-			.attr("transform", "translate(" + domainWidth*2.6/4 +","+domainHeight*3.2/4+")")
-			.selectAll("g")
-			//first and last data is the min and max of recreational spending
-			.data(["$40593",,,,"$75847"])
-			.enter()
-			//creates a g element for each point in arbitrary data
-			.append("g")
-				.attr("transform",function(d,i){
-					var x = i*legendwidth/5;
-					return "translate("+x+",0)";
-				})
+ 					var xAxis = d3.axisBottom(xScale).ticks(10)
+ 					var yAxis = d3.axisLeft(yScale).ticks(10)
 
-			//adds an item of varying color for each point in data
-			legend.append("circle")
-				.attr("cy",legendheight/6)
-				.attr("cx",legendwidth/10)
-				.attr("r",function(d,i){
-					return 7+i*3;
-				})
-				//varies color according to our color scale
-				.attr("fill",function(d,i){
-					return colorScale(i*25);
-				})
+					//creates x and y axis
+					svg.append("g")
+					.attr("transform", "translate(0," + domainHeight/2 + ")" )
+					.call(xAxis)
 
-			//appends text per data
-			legend.append("text")
-				.attr("x",5)
-				.attr("y",legendheight/2)
-				.attr("font-size",legendwidth/15)
-				.text(function(d){
-					return d;
-				}
-			)
-			var path = d3.geoPath();
+					svg.append("g")
+					.attr("transform", "translate(" + domainWidth/2 + ",0)")
+					.call(yAxis)
 
-			data.forEach(function (state) {
+					//draws legend
+					svg.append("rect")
+						.attr("transform", "translate(" + domainWidth*2.6/4 +","+domainHeight*3/4+")")
+						.attr("fill","white")
+						.attr("stroke","black")
+						.attr("height",legendheight+legendpadding)
+						.attr("width",legendwidth+legendpadding)
 
-				svg.append("circle")
-				.attr("r", sizeScale(state.medianincome))
-				//.attr("r", 5)
-				.attr("cx", xScale(state.religiousattendance))
-				.attr("cy", yScale(state.workhours))
-				.attr("fill",function(d){
-					return colorScale(sizeScale(state.medianincome)*5);
-				});
+					svg.append("text")
+						.attr("transform", "translate(" + domainWidth*2.6/4 +","+domainHeight*3.2/4+")")
+						.attr("x",legendwidth/4)
+						.attr("y",-legendheight/10)
+						.text("Median Income")
 
-				svg.append("text")
-				.attr("font-family", "helvetica")
-				.attr("x", xScale(state.religiousattendance))
-				.attr("y", yScale(state.workhours))
-				.attr("dy", (-1*sizeScale(state.medianincome)))
-				//.attr("dy", -5)
-				.text(state.abbreviation);
+						//items in legend
+					legend = svg.append("g")
+						.attr("transform", "translate(" + domainWidth*2.6/4 +","+domainHeight*3.2/4+")")
+						.selectAll("g")
+						//first and last data is the min and max of recreational spending
+						.data(["$40593",,,,"$75847"])
+						.enter()
+						//creates a g element for each point in arbitrary data
+						.append("g")
+							.attr("transform",function(d,i){
+								var x = i*legendwidth/5;
+								return "translate("+x+",0)";
+							})
 
-			})
+						//adds an item of varying color for each point in data
+						legend.append("circle")
+							.attr("cy",legendheight/6)
+							.attr("cx",legendwidth/10)
+							.attr("r",function(d,i){
+								return 7+i*3;
+							})
+							//varies color according to our color scale
+							.attr("fill",function(d,i){
+								return colorScale(i*25);
+							})
 
-		})
+						//appends text per data
+						legend.append("text")
+							.attr("x",5)
+							.attr("y",legendheight/2)
+							.attr("font-size",legendwidth/15)
+							.text(function(d){
+								return d;
+							}
+						)
+
+						 var incomeById = {};
+						 //joins median income with id
+						 data.forEach(function(d){incomeById[Number(d.id)]=+d.medianincome;})
+
+										data.forEach(function (state) {
+											svg.append("circle")
+											.attr("r", sizeScale(state.medianincome))
+											//.attr("r", 5)
+											.attr("cx", xScale(state.religiousattendance))
+											.attr("cy", yScale(state.workhours))
+											.attr("fill",function(d){
+												return colorScale(sizeScale(state.medianincome)*5);
+											});
+
+											svg.append("text")
+											.attr("font-family", "helvetica")
+											.attr("x", xScale(state.religiousattendance))
+											.attr("y", yScale(state.workhours))
+											.attr("dy", (-1*sizeScale(state.medianincome)))
+											//.attr("dy", -5)
+											.text(state.abbreviation);
+									})
+
+									//draws the map part of the chloropleth map
+									svg.append("g")
+									.selectAll("path")
+									.data(topojson.feature(us, us.objects.states).features)
+										.enter().append("path")
+										 .attr("transform", "translate(0," + domainHeight + ")" )
+										 .attr("class", "states")
+										 .attr("stroke","white")
+										 .attr("d", path)
+										 //fills color, completing chloropleth
+										 .attr("fill",function (d){
+												 var result = incomeById[Number(d.id)]
+												 return colorScale(sizeScale(result)*5)
+											 }
+										 )
+
+		}
+
 	</script>
 </html>
